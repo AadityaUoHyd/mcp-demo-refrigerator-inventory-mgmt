@@ -1,5 +1,2 @@
-## Docker
-
-This uses Spring's docker compose,
-
-Use IDEA and connect to the database using the credentials from **compose.yaml**
+## refrigerator-inventory-core
+Stores stocks data of my home refrigerator. Ensure you run PostgreSQL(localhost/docker/remote) before running this application.

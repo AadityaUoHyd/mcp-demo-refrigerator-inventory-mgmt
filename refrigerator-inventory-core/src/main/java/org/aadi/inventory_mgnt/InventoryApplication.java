@@ -34,7 +34,7 @@ public class InventoryApplication {
 						.version("v0.0.1")
 						.contact(new Contact()
 								.name("Aaditya B Chatterjee ")
-								.url("https://github.com/AadityaUoHyd/refrigerator-inventory-mgnt"))
+								.url("https://github.com/AadityaUoHyd/mcp-demo-refrigerator-inventory-mgnt"))
 						.license(new License()
 								.name("MIT License")
 								.url("https://opensource.org/licenses/MIT")));

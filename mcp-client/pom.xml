@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.aadi</groupId>
-		<artifactId>refrigerator-inventory-mgnt</artifactId>
+		<artifactId>mcp-demo-refrigerator-inventory-mgnt</artifactId>
 		<version>0.0.1</version>
 		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
 	</parent>

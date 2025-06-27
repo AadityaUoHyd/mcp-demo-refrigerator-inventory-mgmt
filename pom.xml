@@ -11,7 +11,7 @@
 	</parent>
 
   <groupId>org.aadi</groupId>
-  <artifactId>refrigerator-inventory-mgnt</artifactId>
+  <artifactId>mcp-demo-refrigerator-inventory-mgnt</artifactId>
   <version>0.0.1</version>
 
   <packaging>pom</packaging>

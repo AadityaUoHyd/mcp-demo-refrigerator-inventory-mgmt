@@ -13,7 +13,7 @@ record ProductsData(
     @Schema(description = "Type of the product", example = "DRINK") 
     ProductType type, 
 
-    @Schema(description = "Price of the product", example = "100")
+    @Schema(description = "Price of the product in rupees", example = "100")
     float price
 ) {
 }

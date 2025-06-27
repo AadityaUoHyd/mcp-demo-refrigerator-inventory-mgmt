@@ -22,7 +22,7 @@ public class ProductService {
 		this.restClient = RestClient.builder()
 			.baseUrl(BASE_URL)
 			.defaultHeader("Accept", "application/json")
-			.defaultHeader("User-Agent", "ProductsApiClient/1.0 (contant@suriyaprakhash.com)")
+			.defaultHeader("User-Agent", "ProductsApiClient/1.0 (contant@aadi.com)")
 			.build();
 	}
 

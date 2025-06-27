@@ -1,42 +1,127 @@
-# Refrigerator inventory management - A sample Spring AI Server Client setup for demo of MCP server/client
-The Refrigerator Inventory Management project uses the Model Context Protocol (MCP) framework, integrating an AI chatbot 
-with a Spring Boot application. MCP clients connect to a server, which queries a local database (PostgreSQL), 
-and receive answers from an AI model, providing inventory management functionality for refrigerators.
+# 🧊 MCP Demo: Refrigerator Inventory Management
 
-## How to set up
-- Either run local PostgreSQL or spin docker or connects via NeonDB. Just ensure you have set up PostgreSQL.
+A **demo project** showcasing integration between an AI chatbot and a Spring Boot application using the **Model Context Protocol (MCP)** framework. It provides **inventory management** functionality for refrigerators by answering queries through an AI model, backed by a **PostgreSQL** database.
 
-- Now you are supposed to run ollama in local system (one can use api-key of any LLM model as well, but ollama set up is free) =>
-```
-Install Ollama for local set up.
-Go to powershell and run command :
+---
+
+## 🛠️ Tech Stack
+
+* Java / Spring Boot
+* MCP Server / Client
+* PostgreSQL / NeonDB
+* Ollama with `llama3.2` (local LLM)
+* Swagger UI (for testing endpoints)
+
+---
+
+## 🚀 Project Setup
+
+### 1. Set Up PostgreSQL
+
+You can either:
+
+* Run PostgreSQL locally
+* Use Docker to spin up a PostgreSQL container
+* Connect via a hosted DB service like **NeonDB**
+
+Make sure your database is properly configured and running.
+
+---
+
+### 2. Set Up Local LLM with Ollama
+
+Install and run **Ollama** for local LLM support:
+
+```powershell
 > ollama list
-> ollama pull llama3.2:latest (if not installed, 2GB model will get get installed)
+> ollama pull llama3.2:latest
 > ollama run llama3.2
-
-Now run all three app (refrigerator-inventory-core, mcp-server, mcp-client).
-```
-## How to verify MCP server giving results from our own Database instead of global internet
-```
-Go to swagger for verification => http://localhost:8082/swagger-ui/index.html#/ai-chat-controller
-say, click on 'Try it out', and type "what is the capital of India" at Request Body to verify llama3.2 connecting spring boot.
-You'll get answer as "New Delhi"
-
-To test project that is MCP able to answer from my db data => http://localhost:8082/swagger-ui/index.html#/mcp-chat-controller/chat
-say, click on 'Try it out', and type "Product below 100 rupees" at Request Body to verify llama3.2 connecting spring boot.
-
-And in Response Body you'll get something like (it'll vary structure of answer as generating via LLM everytime):
-
-Here are some products available below 100 rupee:
-
-1. Eggs - priced at 10.0 rupees
-2. Cucumber - priced at 40.0 rupees
-3. Spinach - priced at 19.99 rupees
-4. Gulaab Jamun - priced at 99.0 rupees
-
 ```
 
-![screenshot.png](https://raw.githubusercontent.com/AadityaUoHyd/refrigerator-inventory-mgmt/refs/heads/main/screenshot.png)
+> 💡 `llama3.2` is around 2GB and runs locally for free—no API key required!
 
-## Conclusion
-Which tells mcp clients connects to mcp-server, which connects to refrigerator-inventory-core app and providing answer from our db.
+---
+
+### 3. Run the Applications
+
+Make sure you run **all three** components:
+
+* `refrigerator-inventory-core`
+* `mcp-server`
+* `mcp-client`
+
+Each should be correctly configured to communicate with the database and each other.
+
+---
+
+## ✅ Verifying MCP with Local Data
+
+### 🔍 Step 1: Test AI Model is Running
+
+Go to Swagger UI:
+
+```
+http://localhost:8082/swagger-ui/index.html#/ai-chat-controller
+```
+
+* Click **Try it out** on the `chat` endpoint
+* Enter:
+
+  ```json
+  {
+    "message": "What is the capital of India?"
+  }
+  ```
+* You should see:
+
+  ```
+  New Delhi
+  ```
+
+> ✔️ Confirms the local `llama3.2` is up and integrated.
+
+---
+
+### 🔍 Step 2: Verify Response from Local Database
+
+Navigate to:
+
+```
+http://localhost:8082/swagger-ui/index.html#/mcp-chat-controller/chat
+```
+
+* Click **Try it out** and enter:
+
+  ```json
+  {
+    "message": "Product below 100 rupees"
+  }
+  ```
+
+* Sample response:
+
+  ```
+  Here are some products available below 100 rupees:
+
+  1. Eggs - priced at 10.0 rupees
+  2. Cucumber - priced at 40.0 rupees
+  3. Spinach - priced at 19.99 rupees
+  4. Gulaab Jamun - priced at 99.0 rupees
+  ```
+
+> ✔️ This confirms that the MCP server retrieves and responds using **your own database**, not internet data.
+
+---
+
+## 📸 Screenshot
+
+![Demo Screenshot](https://raw.githubusercontent.com/AadityaUoHyd/refrigerator-inventory-mgmt/refs/heads/main/screenshot.png)
+
+---
+
+## 🧾 Conclusion
+
+The **MCP Client** connects to the **MCP Server**, which interacts with the `refrigerator-inventory-core` app and **provides AI-generated answers based on your local database**.
+
+> 🎯 A practical demonstration of a local AI system working in real-time with your Spring Boot and PostgreSQL setup!
+
